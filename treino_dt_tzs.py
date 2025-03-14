@@ -191,12 +191,6 @@ print("Precision:",metrics.precision_score(y_t, val_predictions))
 print("Recall:",metrics.recall_score(y_t, val_predictions))
 print("F1:",metrics.f1_score(y_t, val_predictions))
 
-#dataframe_treino.to_csv('/content/drive/MyDrive/Mestrado/Dissertação/Treinamento DTs TZS/VTM 16.2 - Datasets Para Cada CU/dataset_tzs_'+str(cu_eixo_x)+'x'+str(cu_eixo_y)+'_train.csv', sep=',', index=False)
-
-feat_importances = pd.DataFrame(model_decison_tree_class.feature_importances_, index = X_treino.columns, columns = ["Importance"])
-feat_importances.sort_values(by = 'Importance', ascending = False, inplace = True)
-feat_importances.plot(kind='bar', figsize=(12,6))
-
 """TREINAMENTO DA ÁRVORE DE DECISÃO"""
 
 from os import listdir
@@ -286,4 +280,3 @@ model_decison_tree_class = DecisionTreeClassifier(criterion = hiper_criterion, m
 model_decison_tree_class.fit(X_under, y_under)
 
 apply_Decision_Tree(X_under, y_under, str(cu_eixo_x)+'x'+str(cu_eixo_y), save_path)
-#apply_Decision_Tree(X_under, y_under, "16x16", save_path)
